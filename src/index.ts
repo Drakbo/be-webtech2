@@ -1,8 +1,16 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
-import studentsRoute from './students/students.route';
+import { cors } from 'hono/cors';
+import studentsRoute from './students/students.route.js';
 
 const app = new Hono();
+
+// Enable CORS for frontend communication
+app.use('/*', cors({
+  origin: 'http://localhost:4200',
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowHeaders: ['Content-Type'],
+}));
 
 app.get('/', (c) => {
   return c.text('Hello Hono! Student API is running.');

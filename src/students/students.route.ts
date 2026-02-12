@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { createStudent, getStudents, getStudentById, updateStudent, deleteStudent } from './students.controller';
+import { createStudent, getStudents, getStudentById, updateStudent, deleteStudent } from './students.controller.js';
 
 const studentsRoute = new Hono();
 
